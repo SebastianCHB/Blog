@@ -18,8 +18,8 @@ return new class extends Migration
         $table->string('img',100);
         $table->string('content');
         $table->integer('likes');
-
-        $table->integer('user_id');
+        $table->foreignId('user_id')->constrained('users');
+        $table->foreignId('categorie_id')->constrained('categories');
         $table->timestamps();
         });
     }
