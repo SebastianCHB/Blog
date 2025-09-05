@@ -5,12 +5,12 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CategoriesSeed extends Seeder
+class categories_seed extends Seeder
 {
     public function run(): void
     {
         DB::table('categories')->insert([
-            "nombre" => 'Arboles',
+            "nombre" => 'Plantas',
             "img" => "default.jpg",
             'created_at' => date('Y-m-d H:m:s')
         ]);
