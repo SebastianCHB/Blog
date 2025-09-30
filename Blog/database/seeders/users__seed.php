@@ -22,16 +22,5 @@ class users__seed extends Seeder
             "img" => "default.jpg",
             'created_at' => date('Y-m-d H:i:s') // Fixed time format
         ]);
-
-        for ($i = 0; $i < 50; $i++) { // Added $ before i
-            DB::table('users')->insert([
-                "name" => 'Admin ' . $i,
-                "email" => 'admin' . $i . '@gmail.com',
-                "password" => Hash::make('123'),
-                "username" => 'adm' . $i,
-                "img" => "default.jpg",
-                'created_at' => date('Y-m-d H:i:s') // Fixed time format
-            ]);
-        }
     }
 }
