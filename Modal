@@ -1,0 +1,86 @@
+@extends('admin.dashboard')
+
+@section('contenido')
+<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+
+<div class="p-4">
+    <h2 style="margin-left: 1rem;">Planos</h2>
+
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalCrearPlano">
+      Añadir Plano
+    </button>
+
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Proyecto ID</th>
+          <th scope="col">Nombre Plano</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Versión</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($planos as $item)
+          <tr>
+            <td>{{ $item->id }}</td>
+            <td>{{ $item->proyecto_id }}</td>
+            <td>{{ $item->nombre_plano }}</td>
+            <td>{{ $item->descripcion }}</td>
+            <td>{{ $item->version }}</td>
+            <td>
+              <button class="btn btn-danger btn-sm btnEliminar" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#modalDelete">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="modalCrearPlano" tabindex="-1" aria-labelledby="modalCrearPlanoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/dashboard/planos" method="POST">
+        @csrf
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCrearPlanoLabel">Añadir Nuevo Plano</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="mb-3">
+              <label for="nombre_plano" class="col-form-label">Nombre Plano:</label>
+              <input type="text" class="form-control" id="nombre_plano" name="nombre_plano" value="{{ old('nombre_plano') }}" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="descripcion" class="col-form-label">Descripción:</label>
+              <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ old('descripcion') }}" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="version" class="col-form-label">Versión:</label>
+              <input type="text" class="form-control" id="version" name="version" value="{{ old('version') }}" required>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar Plano</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endsection
+
+@section('scripts')
+<script>
+    console.log("Scripts de la vista de planos cargados.");
+    // Tu alert original
+    alert("Hola");
+</script>
+@endsection
