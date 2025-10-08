@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostsController;
 
 //ENDPOINTS
 Route::get('/', function () {
@@ -18,10 +20,15 @@ Route::get("/about",function(){
 });
 
 Route::group(['prefix'=>'dashboard'],function(){
-    Route::get("/",function(){
-        return view('admin.dashboard');
-    });
+    Route::resource('/',DashboardController::class);
+    Route::resource('/posts',PostsController::class);
+    Route::get('/posts/actions/add',[PostsController::Class,'showAdd']);
     Route::get("/users",[UsersController::class,'getUsers']);
     Route::post("/users",[UsersController::class,'createUsers']);
 });
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

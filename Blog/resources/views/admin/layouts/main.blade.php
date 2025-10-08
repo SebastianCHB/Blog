@@ -12,6 +12,7 @@
     <title>SB Admin 2 - Blank</title>
 
     <!-- Custom fonts for this template-->
+     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
     <link href="{{ asset('/admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -74,12 +75,16 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button  class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();" class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('/admin/vendor/jquery/jquery.min.js')}}"></script>
