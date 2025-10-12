@@ -9,22 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('posts', function(Blueprint $table){
+   public function up(): void
+{
+    Schema::create('posts', function(Blueprint $table){
         $table->id();
         $table->string('title');
         $table->string('description');
-        $table->string('img',100);
-        $table->string('content');
-        $table->integer('likes');
+        $table->string('img', 100)->nullable(); 
+        $table->text('content');
+        $table->integer('likes')->default(0);
         $table->string('slug');
         $table->foreignId('user_id')->constrained('users');
-        $table->foreignId('categorie_id')->constrained('categories');
+        $table->foreignId('category_id')->constrained('categories');
         $table->timestamps();
-        });
-    }
-
+    });
+}
     /**
      * Reverse the migrations.
      */

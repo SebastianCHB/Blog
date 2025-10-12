@@ -13,17 +13,6 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('posts')->insert([
-            "title" => 'Como cuidar las suculentas',
-            "description" => 'Aprenda a cuidar sus suculentas',
-            "img" => 'default.jpg',
-            "content" => 'Contenido del post',
-            "likes" => 0,
-            "slug" => 'como-cuidar-suculentas',
-            "user_id" => 1,
-            "categorie_id" => 1,
-            'created_at' => date('Y-m-d H:i:s') 
-        ]);
 
         DB::table('posts')->insert([
             "title" => 'Tulipanes',
@@ -33,7 +22,7 @@ class PostSeeder extends Seeder
             "likes" => 0,
             "slug" => 'como-cuidar-tulipanes',
             "user_id" => 1,
-            "categorie_id" => 1,
+            "category_id" => 1,
             'created_at' => date('Y-m-d H:i:s') 
         ]);
     }

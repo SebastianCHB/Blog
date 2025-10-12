@@ -27,7 +27,14 @@ Route::group(['prefix'=>'dashboard'],function(){
     Route::post("/users",[UsersController::class,'createUsers']);
 });
 
-
+Route::middleware(['auth'])->prefix('dashboard')->group(function () {
+    
+    Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
+    Route::get('/admin/post_add', [PostsController::class, 'showAdd'])->name('posts.add');
+    Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+    Route::get('/posts/{post}', [PostsController::class, 'show'])->name('posts.show');
+    
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
